@@ -1,11 +1,9 @@
-# --- DEFINICJE KLAS ---
-
 class Book:
     def __init__(self, title, author, total_copies):
         self.title = title
         self.author = author
         self.total_copies = total_copies
-        self._available_copies = total_copies  # Hermetyzacja: dostęp chroniony
+        self._available_copies = total_copies  
 
     @property
     def available_copies(self):
@@ -26,8 +24,8 @@ class Book:
 
 class User:
     def __init__(self, login, password, role):
-        self._login = login        # Hermetyzacja: chroniony login
-        self._password = password  # Hermetyzacja: chronione hasło
+        self._login = login        
+        self._password = password  
         self.role = role
 
     @property
@@ -134,7 +132,7 @@ class Library:
     def show_catalog(self):
         print("\n=== KATALOG BIBLIOTEKI ===")
         for book in self.books:
-            print(book)  # Tutaj działa dunder __str__ z klasy Book
+            print(book)  
         print("==========================")
 
     def borrow_book(self, reader):
@@ -201,23 +199,23 @@ class Library:
             self.extension_requests.remove(prosba)
 
 
-# --- URUCHOMIENIE APLIKACJI ---
+
 def main():
     moja_biblioteka = Library()
 
-    # Twoje książki
+   
     moja_biblioteka.add_book(Book("Pan Tadeusz", "Adam Mickiewicz", 3))
     moja_biblioteka.add_book(Book("Wiedźmin", "Andrzej Sapkowski", 0))
     moja_biblioteka.add_book(Book("Dziady", "Adam Mickiewicz", 5))
     moja_biblioteka.add_book(Book("Lalka", "Bolesław Prus", 1))
     moja_biblioteka.add_book(Book("Opowieść wigilijna", "Charles Dickens", 2))
 
-    # Twoi czytelnicy
+    
     moja_biblioteka.add_user(Reader("janek", "haslo123"))
     moja_biblioteka.add_user(Reader("ania", "admin1"))
     moja_biblioteka.add_user(Reader("oski", "qwerty!"))
     
-    # Dodany bibliotekarz do obsługi systemu
+
     moja_biblioteka.add_user(Librarian("admin", "admin123"))
 
     print("Witamy w Obiektowym Systemie Bibliotecznym!")
